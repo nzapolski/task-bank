@@ -31,7 +31,7 @@ namespace HeyBanking.App.Queries.GetAccounts
         public async Task<PagedResult<AccountDto>> Handle(GetAccoutnsQuery request, CancellationToken cancellationToken)
         {
             return await _dbContext.Accounts
-                .Where(x => x.OwnerId == _currentUser.Id)
+                .Where(x => x.OwnerId == _currentUser.UserId)
                 .OrderBy(x => x.CreatedAt)
                 .ProjectTo<AccountDto>(_mapper.ConfigurationProvider)
                 .PagedResultAsync(request.PageNumber, request.PageSize);

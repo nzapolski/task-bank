@@ -26,7 +26,7 @@ namespace HeyBanking.App.Commands.CreateAccount
             {
                 Id = Guid.NewGuid(),
                 Ammount = request.InitialDeposit,
-                OwnerId = _currentUser.Id,
+                OwnerId = _currentUser.UserId,
                 CreatedAt = DateTimeOffset.UtcNow
             };
 

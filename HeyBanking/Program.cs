@@ -1,17 +1,24 @@
+using HeyBanking.API;
+using HeyBanking.App;
+using HeyBanking.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddApplicationServices();
+builder.Services.AddInfrastructureServices(builder.Configuration);
+builder.Services.AddAPIServices();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddAuthentication().AddGoogle(googleOptions =>
-{
-    googleOptions.ClientId = "422367350056-h543fdjbtfs39mghpk3hebbt1joru28q.apps.googleusercontent.com";
-    googleOptions.ClientSecret = "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";
-});
+//builder.Services.AddAuthentication().AddGoogle(googleOptions =>
+//{
+//    googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
+//    googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
+//});
 
 var app = builder.Build();
 

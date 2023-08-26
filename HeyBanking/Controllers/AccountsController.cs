@@ -12,9 +12,9 @@ namespace HeyBanking.API.Controllers
     [Route("api/accounts")]
     public class AccountsController: ControllerBase
     {
-        private readonly Mediator _mediator;
+        private readonly IMediator _mediator;
 
-        public AccountsController(Mediator mediator)
+        public AccountsController(IMediator mediator)
         {
             _mediator = mediator;
         }

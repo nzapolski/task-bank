@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HeyBanking.Data\HeyBanking.App.csproj" />
+    <ProjectReference Include="..\HeyBanking.Infrastructure\HeyBanking.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

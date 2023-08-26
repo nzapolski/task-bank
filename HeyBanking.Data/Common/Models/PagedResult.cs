@@ -5,8 +5,11 @@ namespace HeyBanking.App.Common.Models
     public class PagedResult<T>
     {
         public IReadOnlyCollection<T> Items { get; }
+
         public int PageNumber { get; }
+        
         public int TotalPages { get; }
+        
         public int TotalCount { get; }
 
         public PagedResult(IReadOnlyCollection<T> items, int count, int pageNumber, int pageSize)
