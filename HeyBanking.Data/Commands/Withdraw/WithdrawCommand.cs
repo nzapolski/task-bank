@@ -5,6 +5,9 @@ using HeyBanking.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
+using ValidationException = HeyBanking.App.Common.Exceptions.ValidationException;
+
+
 namespace HeyBanking.App.Commands.Withdraw
 {
     public class WithdrawCommand: IRequest<WithdrawDto>
@@ -27,15 +30,22 @@ namespace HeyBanking.App.Commands.Withdraw
         {
             using (var dbContextTransaction = _context.Database.BeginTransaction(IsolationLevel.RepeatableRead))
             {
-                var entity = await _context.Accounts
+                var account = await _context.Accounts
                 .SingleOrDefaultAsync(x => x.Id == request.AccountId, cancellationToken);
 
-                if (entity == null)
+                if (account == null)
                 {
                     throw new NotFoundException(nameof(Account), request.AccountId);
                 }
 
-                entity.Amount -= request.Amount;
+                var maximumLimit = Math.Min(account.Amount * 0.9M, account.Amount - 100M);
+
+                if (request.Amount > maximumLimit)
+                {
+                    throw new ValidationException(nameof(request.Amount), $"Withdrawal limit exceeded. Max limit is {maximumLimit}");
+                }
+
+                account.Amount -= request.Amount;
 
                 await _context.SaveChangesAsync(cancellationToken);
 
@@ -45,7 +55,7 @@ namespace HeyBanking.App.Commands.Withdraw
                 {
                     AccountId = request.AccountId,
                     WithdrawAmount = request.Amount,
-                    Balance = entity.Amount
+                    Balance = account.Amount
                 };
             }
         }

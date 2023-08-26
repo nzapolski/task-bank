@@ -34,7 +34,8 @@ namespace HeyBanking.App.Commands.DeleteAccount
                     throw new NotFoundException(nameof(Account), request.AccountId);
                 }
 
-                await Task.Delay(60 * 1000);
+                // for race condition test
+                // await Task.Delay(60 * 1000);
 
                 _context.Accounts.Remove(account);
 

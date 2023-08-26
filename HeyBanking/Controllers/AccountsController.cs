@@ -1,4 +1,5 @@
-﻿using HeyBanking.App.Commands.CreateAccount;
+﻿using HeyBanking.API.Filters;
+using HeyBanking.App.Commands.CreateAccount;
 using HeyBanking.App.Commands.DeleteAccount;
 using HeyBanking.App.Commands.Withdraw;
 using HeyBanking.App.Common.Models;
@@ -10,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace HeyBanking.API.Controllers
 {
     [ApiController]
+    [ApiExceptionFilter]
     [Route("api/accounts")]
     public class AccountsController: ControllerBase
     {

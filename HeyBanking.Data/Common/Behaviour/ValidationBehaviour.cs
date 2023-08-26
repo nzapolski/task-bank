@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using MediatR;
+using ValidationException = HeyBanking.App.Common.Exceptions.ValidationException;
 
 namespace HeyBanking.App.Common.Behaviour
 {

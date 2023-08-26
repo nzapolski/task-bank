@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  heybanking.api:
+    image: ${DOCKER_REGISTRY-}heybankingapi
+    build:
+      context: .
+      dockerfile: HeyBanking/Dockerfile

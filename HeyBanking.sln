@@ -3,19 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33502.453
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeyBanking.API", "HeyBanking\HeyBanking.API.csproj", "{4BC00AB6-E17B-4EE4-93BA-8B0738F8DB35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HeyBanking.API", "HeyBanking\HeyBanking.API.csproj", "{4BC00AB6-E17B-4EE4-93BA-8B0738F8DB35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeyBanking.App", "HeyBanking.Data\HeyBanking.App.csproj", "{FE16E161-5C1A-452C-BE31-BDDC5A23E8C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HeyBanking.App", "HeyBanking.Data\HeyBanking.App.csproj", "{FE16E161-5C1A-452C-BE31-BDDC5A23E8C4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{63EA985F-976A-4F07-98C5-E051A9745FFF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{A1539755-8F81-4D65-94AC-9533DBC4A674}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeyBanking.Tests", "HeyBanking.Tests\HeyBanking.Tests.csproj", "{A2C41EE9-886E-49B4-A218-D4BF95142243}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HeyBanking.Tests", "HeyBanking.Tests\HeyBanking.Tests.csproj", "{A2C41EE9-886E-49B4-A218-D4BF95142243}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeyBanking.Domain", "HeyBanking.Domain\HeyBanking.Domain.csproj", "{0A10BD8E-4072-4EDA-BF76-AFDD9D895084}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HeyBanking.Domain", "HeyBanking.Domain\HeyBanking.Domain.csproj", "{0A10BD8E-4072-4EDA-BF76-AFDD9D895084}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeyBanking.Infrastructure", "HeyBanking.Infrastructure\HeyBanking.Infrastructure.csproj", "{E3F20CDC-09ED-449F-9E6F-46966532F8A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HeyBanking.Infrastructure", "HeyBanking.Infrastructure\HeyBanking.Infrastructure.csproj", "{E3F20CDC-09ED-449F-9E6F-46966532F8A8}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{6C0D9C17-0DDD-4305-9D8F-1AA0089C44A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{E3F20CDC-09ED-449F-9E6F-46966532F8A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3F20CDC-09ED-449F-9E6F-46966532F8A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3F20CDC-09ED-449F-9E6F-46966532F8A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C0D9C17-0DDD-4305-9D8F-1AA0089C44A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C0D9C17-0DDD-4305-9D8F-1AA0089C44A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C0D9C17-0DDD-4305-9D8F-1AA0089C44A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C0D9C17-0DDD-4305-9D8F-1AA0089C44A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
