@@ -268,3 +268,5 @@ Packages.props
 log*.txt
 
 *.db
+*.db-shm
+*.db-wal
