@@ -31,7 +31,7 @@ namespace HeyBanking.App.Commands.Deposit
                 throw new NotFoundException(nameof(Account), request.AccountId);
             }
 
-            account.Ammount += request.Deposit;
+            account.Amount += request.Deposit;
 
             await _context.SaveChangesAsync(cancellationToken);
         }

@@ -1,10 +1,11 @@
 ﻿using HeyBanking.Domain.Entities;
+using HeyBanking.Infrastructure.DummyData;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace HeyBanking.Infrastructure.Persistence
 {
-    internal class ApplicationDbContextInitialiser
+    public class ApplicationDbContextInitialiser
     {
         private readonly ILogger<ApplicationDbContextInitialiser> _logger;
         private readonly ApplicationDbContext _context;
@@ -17,18 +18,7 @@ namespace HeyBanking.Infrastructure.Persistence
 
         public async Task InitialiseAsync()
         {
-            try
-            {
-                if (_context.Database.IsSqlServer())
-                {
-                    await _context.Database.MigrateAsync();
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "An error occurred while initialising the database.");
-                throw;
-            }
+             await _context.Database.MigrateAsync();
         }
 
         public async Task SeedAsync()
@@ -46,15 +36,13 @@ namespace HeyBanking.Infrastructure.Persistence
 
         public async Task TrySeedAsync()
         {
-
-            // Default data
-            // Seed, if necessary
             if (!_context.Users.Any())
             {
                 _context.Users.Add(new User
                 {
-                    Id = Guid.Empty,
-                    Name = "Dummy user"
+                    Id = DataConstants.DummyUser.Id,
+                    Name = DataConstants.DummyUser.Name,
+                    ExternalId = DataConstants.DummyUser.ExternalId
                 });
 
                 await _context.SaveChangesAsync();

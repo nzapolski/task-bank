@@ -8,6 +8,7 @@ namespace HeyBanking.App.Commands.CreateAccount
         public DepositCommandValidator()
         {
             RuleFor(v => v.Deposit)
+                .GreaterThan(0)
                 .LessThanOrEqualTo(10_000);
         }
     }

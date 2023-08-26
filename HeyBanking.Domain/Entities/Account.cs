@@ -6,8 +6,11 @@
         
         public Guid OwnerId { get; set; }
 
-        public decimal Ammount { get; set; }
+        public decimal Amount { get; set; }
 
         public DateTimeOffset CreatedAt { get; set; }
+
+
+        public User Owner { get; set; }
     }
 }

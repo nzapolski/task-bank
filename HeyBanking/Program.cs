@@ -1,6 +1,8 @@
 using HeyBanking.API;
 using HeyBanking.App;
 using HeyBanking.Infrastructure;
+using HeyBanking.Infrastructure.DummyData;
+using HeyBanking.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +31,16 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+
+    // Initialise and seed database
+    using (var scope = app.Services.CreateScope())
+    {
+        File.Delete(DataConstants.Database.FileName);
+
+        var initialiser = scope.ServiceProvider.GetRequiredService<ApplicationDbContextInitialiser>();
+        await initialiser.InitialiseAsync();
+        await initialiser.SeedAsync();
+    }
 }
 
 app.UseAuthorization();

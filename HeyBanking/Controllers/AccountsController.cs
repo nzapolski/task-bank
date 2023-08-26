@@ -1,5 +1,6 @@
 ﻿using HeyBanking.App.Commands.CreateAccount;
 using HeyBanking.App.Commands.DeleteAccount;
+using HeyBanking.App.Commands.Withdraw;
 using HeyBanking.App.Common.Models;
 using HeyBanking.App.Queries.GetAccount;
 using HeyBanking.App.Queries.GetAccounts;
@@ -52,10 +53,25 @@ namespace HeyBanking.API.Controllers
         /// </summary>
         /// <returns>account balance</returns>
         [HttpPost("withdrawAndDelete/{id:guid}")]
-        public async Task<ActionResult<decimal>> WithdrawAndDeleteAccount([FromRoute] Guid id)
+        public async Task<ActionResult<WithdrawDto>> WithdrawAndDeleteAccount([FromRoute] Guid id)
             => await _mediator.Send(new WithdrawAndDeleteAccountCommand
             {
                 AccountId = id
             });
+
+        /// <summary>
+        /// Withdraw
+        /// </summary>
+        /// <returns>account balance</returns>
+        [HttpPost("withdraw/{id:guid}")]
+        public async Task<ActionResult<WithdrawDto>> Withdraw([FromRoute] Guid id, WithdrawCommand command)
+        {
+            if (id != command.AccountId)
+            {
+                return BadRequest();
+            }
+
+            return await _mediator.Send(command);
+        }
     }
 }

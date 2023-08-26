@@ -1,4 +1,5 @@
 ﻿using HeyBanking.App.Common.Interfaces;
+using HeyBanking.Infrastructure.DummyData;
 using HeyBanking.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -10,15 +11,8 @@ namespace HeyBanking.Infrastructure
     {
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
         {
-            if (configuration.GetValue<bool>("UseInMemoryDatabase"))
-            {
-                services.AddDbContext<ApplicationDbContext>(options =>
-                    options.UseInMemoryDatabase("HeyBanking"));
-            }
-            else
-            {
-                throw new NotImplementedException();
-            }
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite($"Data Source={DataConstants.Database.FileName}",
+                builder => builder.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
 
             services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
 
